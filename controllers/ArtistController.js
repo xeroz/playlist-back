@@ -75,7 +75,6 @@ function deleteArtist(req, res){
          if (!artistRemoved) {
             res.status(404).send({ message: "El artista no se elimino" });
          } else {
-
             Album.find({ artist: artistRemoved._id }).remove((err, albumRemoved) => {
                if (err) {
                   res.status(500).send({ message: "Error al eliminar el album" });
@@ -87,7 +86,7 @@ function deleteArtist(req, res){
                         if (err) {
                            res.status(500).send({ message: "Error al eliminar la canción" });
                         } else {
-                           if (!albumRemoved) {
+                           if (!songRemoved) {
                               res.status(404).send({ message: "La canción no ha sido elimando" });
                            } else {
                               res.status(202).send({ artistRemoved });
@@ -105,7 +104,7 @@ function deleteArtist(req, res){
 function uploadImage(req, res){
    var artistId = req.params.id;
    var file_name = 'No subio';
-   
+
    if (req.files) {
       var file_path = req.files.image.path;
       var file_split = file_path.split('\/');
