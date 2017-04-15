@@ -16,7 +16,7 @@ function saveUser(req, res){
    var user = new User();
 
    var params = req.body;
-   
+
    user.name    = params.name;
    user.surname = params.surname;
    user.email   = params.email;
@@ -116,7 +116,7 @@ function uploadImage(req, res){
             if (!userUpdated) {
                res.status(404).send({ message: 'No se ha podido actualizar el usuario' });
             } else {
-               res.status(200).send({ user: userUpdated });
+               res.status(200).send({ image: file_name, user: userUpdated });
             }
          });
       } else {
