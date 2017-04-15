@@ -16,7 +16,7 @@ function saveUser(req, res){
    var user = new User();
 
    var params = req.body;
-   console.log(params);
+   
    user.name    = params.name;
    user.surname = params.surname;
    user.email   = params.email;
