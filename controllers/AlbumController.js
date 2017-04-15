@@ -99,7 +99,7 @@ function deleteAlbum(req, res){
 function uploadImage(req, res){
    var albumId = req.params.id;
    var file_name = 'No subio';
-   
+
    if (req.files) {
       var file_path  = req.files.image.path;
       var file_split = file_path.split('\/');
@@ -110,7 +110,7 @@ function uploadImage(req, res){
 
       if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif' ) {
          Album.findByIdAndUpdate(albumId, {image: file_name}, (err, albumUpdated) => {
-            if (!albumId) {
+            if (!albumUpdated) {
                res.status(404).send({ message: 'No se ha podido actualizar el usuario' });
             } else {
                res.status(200).send({ album: albumUpdated });
